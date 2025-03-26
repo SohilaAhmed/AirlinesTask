@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--All Airlines View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="AllAirlinesViewController" id="Y6W-OH-hqX" customClass="AllAirlinesViewController" customModule="AirlinesTask" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="4d0-4V-BW7">
+                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qyG-87-7gl">
+                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="q5E-Q1-IJ9">
+                                        <rect key="frame" x="111.33333333333333" y="281" width="170.66666666666669" height="197"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="airline (1)" translatesAutoresizingMaskIntoConstraints="NO" id="Fau-9Z-J5V">
+                                                <rect key="frame" x="0.0" y="0.0" width="170.66666666666666" height="170.66666666666666"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Empty" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RQP-MQ-D1K">
+                                                <rect key="frame" x="0.0" y="176.66666666666663" width="170.66666666666666" height="20.333333333333343"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="q5E-Q1-IJ9" firstAttribute="centerX" secondItem="qyG-87-7gl" secondAttribute="centerX" id="12o-Il-3vH"/>
+                                    <constraint firstItem="q5E-Q1-IJ9" firstAttribute="centerY" secondItem="qyG-87-7gl" secondAttribute="centerY" id="vs8-qt-cHo"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="qyG-87-7gl" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="9Vx-9V-Z56"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="qyG-87-7gl" secondAttribute="bottom" id="Iu8-zw-0Kf"/>
+                            <constraint firstItem="4d0-4V-BW7" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="MtG-Be-KLZ"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="4d0-4V-BW7" secondAttribute="bottom" id="exJ-6I-8u9"/>
+                            <constraint firstItem="4d0-4V-BW7" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="snc-iG-Hkj"/>
+                            <constraint firstItem="qyG-87-7gl" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="tQ7-C8-J6f"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="qyG-87-7gl" secondAttribute="trailing" id="uDm-8T-0UI"/>
+                            <constraint firstItem="4d0-4V-BW7" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="xEO-yM-uwS"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="airlinesTableView" destination="4d0-4V-BW7" id="rVY-yX-ANB"/>
+                        <outlet property="emptyView" destination="qyG-87-7gl" id="3S8-o4-MaO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="132" y="-34"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="airline (1)" width="170.66667175292969" height="170.66667175292969"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
