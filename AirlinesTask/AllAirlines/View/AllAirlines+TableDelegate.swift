@@ -28,7 +28,10 @@ extension AllAirlinesViewController: UITableViewDelegate , UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       
+        let st = UIStoryboard(name: "AirlineDetails", bundle: nil)
+        let vc = st.instantiateViewController(withIdentifier: "AirlineDetailsViewController") as! AirlineDetailsViewController
+        vc.viewModel = AirlineDetailsViewModel(airlineData: viewModel.getAirlineDataByIndex(index: indexPath.row))
+        navigationController?.pushViewController(vc, animated: true)
     }
      
 }

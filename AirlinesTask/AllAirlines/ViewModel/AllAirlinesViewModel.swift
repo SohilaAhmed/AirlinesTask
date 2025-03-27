@@ -40,12 +40,12 @@ class AllAirlinesViewModel: AirlinesViewModelProtocol{
     }
       
     func favAction(index: IndexPath){
-        let isFav = CoreDataManager.checkFavCoreData(selectedCode: airlinesData?[index.row].code ?? "")
+        let isFav = CoreDataManager.shared.checkFavCoreData(selectedCode: airlinesData?[index.row].code ?? "")
         if isFav{
-            CoreDataManager.deleteFromFavCoreData(selectedCode: airlinesData?[index.row].code ?? "")
+            CoreDataManager.shared.deleteFromFavCoreData(selectedCode: airlinesData?[index.row].code ?? "")
         }else{
             if let airline = airlinesData?[index.row]{
-                CoreDataManager.saveAirlineToCoreData(data: airline)
+                CoreDataManager.shared.saveAirlineToCoreData(data: airline)
             }
         }
         self.onSucess?()

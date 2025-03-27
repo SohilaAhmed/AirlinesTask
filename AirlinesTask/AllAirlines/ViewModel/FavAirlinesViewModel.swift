@@ -39,19 +39,19 @@ class FavAirlinesViewModel: AirlinesViewModelProtocol{
     }
       
     func favAction(index: IndexPath){
-        CoreDataManager.deleteFromFavCoreData(selectedCode: airlinesData?[index.row].code ?? "")
+        // in fav screen so the action is just delete
+        CoreDataManager.shared.deleteFromFavCoreData(selectedCode: airlinesData?[index.row].code ?? "")
         getAirlines()
     }
     
 }
-
-// MARK: -  APIs
+ 
 extension FavAirlinesViewModel{
    // MARK: - getAirlines
     func getAirlines() {
-        airlinesData = CoreDataManager.fetchFavAirlineFromCoreData()
+        // get saved data from core data
+        airlinesData = CoreDataManager.shared.fetchFavAirlineFromCoreData()
+        // update ui 
         onSucess?()
     }
-      
-    
 }

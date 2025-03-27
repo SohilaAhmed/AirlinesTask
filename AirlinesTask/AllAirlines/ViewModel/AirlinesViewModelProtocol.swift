@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 protocol AirlinesViewModelProtocol{
     var onSucess: (() -> ())? { get set }
     var onError: ((_ msg: String) -> ())? { get set }
