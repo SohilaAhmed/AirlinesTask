@@ -34,7 +34,7 @@ class AirlinesTableViewCell: UITableViewCell {
     }
     
     func handelFav(selectedCode: String){
-        var favAirlinesUseCase: FavAirlinesUseCase = FavAirlinesUseCase()
+        let favAirlinesUseCase: FavAirlinesUseCase = FavAirlinesUseCase()
         let isFav = favAirlinesUseCase.checkIsFavAirline(selectedCode: selectedCode)
         isFav ? isFavBtn.setImage(UIImage.favouriteSelected, for: .normal) : isFavBtn.setImage(UIImage.favourite, for: .normal)
     }
