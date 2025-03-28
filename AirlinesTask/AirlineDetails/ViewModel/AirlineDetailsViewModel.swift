@@ -8,6 +8,8 @@
 import Foundation
 
 class AirlineDetailsViewModel: AirlineDetailsViewModelProrocol{
+    var favAirlinesUseCase: FavAirlinesUseCase = FavAirlinesUseCase()
+    
     var onSucess: (() -> ())?
     var onError: ((_ msg: String) -> ())?
     var showLoadingIndicator: ((_ isLoading: Bool) -> Void)?
@@ -49,18 +51,18 @@ class AirlineDetailsViewModel: AirlineDetailsViewModelProrocol{
     
     func isFav() -> Bool{
         let code = airlineData?.code ?? ""
-        let isFav = CoreDataManager.shared.checkFavCoreData(selectedCode: code)
+        let isFav = favAirlinesUseCase.checkIsFavAirline(selectedCode: code)
         return isFav
     }
       
     func favAction(){
         // check if the item saved on core data or not
-        let isFav = CoreDataManager.shared.checkFavCoreData(selectedCode: airlineData?.code ?? "")
+        let isFav = favAirlinesUseCase.checkIsFavAirline(selectedCode: airlineData?.code ?? "")
         if isFav{ // if it saved delete it
-            CoreDataManager.shared.deleteFromFavCoreData(selectedCode: airlineData?.code ?? "")
+            favAirlinesUseCase.deleteFromFavAirline(selectedCode: airlineData?.code ?? "")
         }else{ // if it not saved save it
             if let airline = airlineData{
-                CoreDataManager.shared.saveAirlineToCoreData(data: airline)
+                favAirlinesUseCase.saveToFavAirline(airlineData: airline)
             }
         }
         

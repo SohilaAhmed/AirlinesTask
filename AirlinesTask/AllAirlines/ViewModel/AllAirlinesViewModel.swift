@@ -8,7 +8,8 @@
 import Foundation
 
 class AllAirlinesViewModel: AirlinesViewModelProtocol{
-    var useCase: AllAirlinesUseCase = AllAirlinesUseCase()
+    var allAirlinesUseCase: AllAirlinesUseCase = AllAirlinesUseCase()
+    var favAirlinesUseCase: FavAirlinesUseCase = FavAirlinesUseCase()
     
     var onSucess: (() -> ())?
     var onError: ((_ msg: String) -> ())?
@@ -40,12 +41,12 @@ class AllAirlinesViewModel: AirlinesViewModelProtocol{
     }
       
     func favAction(index: IndexPath){
-        let isFav = CoreDataManager.shared.checkFavCoreData(selectedCode: airlinesData?[index.row].code ?? "")
+        let isFav = favAirlinesUseCase.checkIsFavAirline(selectedCode: airlinesData?[index.row].code ?? "")
         if isFav{
-            CoreDataManager.shared.deleteFromFavCoreData(selectedCode: airlinesData?[index.row].code ?? "")
+            favAirlinesUseCase.deleteFromFavAirline(selectedCode: airlinesData?[index.row].code ?? "")
         }else{
             if let airline = airlinesData?[index.row]{
-                CoreDataManager.shared.saveAirlineToCoreData(data: airline)
+                favAirlinesUseCase.saveToFavAirline(airlineData: airline)
             }
         }
         self.onSucess?()
@@ -58,7 +59,7 @@ extension AllAirlinesViewModel{
    // MARK: - getAirlines
     func getAirlines() {
         isLoading = true // Show activity indicator
-        useCase.getAllAirlines() { [weak self] result in
+        allAirlinesUseCase.getAllAirlines() { [weak self] result in
             self?.isLoading = false // Hide activity indicator
             switch result {
             case .success(let data):

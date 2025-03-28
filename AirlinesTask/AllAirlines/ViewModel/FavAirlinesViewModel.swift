@@ -8,6 +8,7 @@
 import Foundation
 
 class FavAirlinesViewModel: AirlinesViewModelProtocol{
+    var favAirlinesUseCase: FavAirlinesUseCase = FavAirlinesUseCase()
     
     var onSucess: (() -> ())?
     var onError: ((_ msg: String) -> ())?
@@ -40,18 +41,18 @@ class FavAirlinesViewModel: AirlinesViewModelProtocol{
       
     func favAction(index: IndexPath){
         // in fav screen so the action is just delete
-        CoreDataManager.shared.deleteFromFavCoreData(selectedCode: airlinesData?[index.row].code ?? "")
+        favAirlinesUseCase.deleteFromFavAirline(selectedCode: airlinesData?[index.row].code ?? "")
         getAirlines()
     }
-    
+     
 }
  
 extension FavAirlinesViewModel{
    // MARK: - getAirlines
     func getAirlines() {
         // get saved data from core data
-        airlinesData = CoreDataManager.shared.fetchFavAirlineFromCoreData()
-        // update ui 
+        airlinesData = favAirlinesUseCase.getFavAirlines()
+        // update ui
         onSucess?()
     }
 }
